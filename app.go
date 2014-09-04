@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"log"
+	"net/http"
 	"net/url"
 	"os"
 	"time"
@@ -45,13 +48,20 @@ func main() {
 	for {
 		select {
 		case tweet := <-tweetC:
-			logg.Info("Retwetted #{tweet.IdS}")
-			api.Retweet(tweet.Id, false)
+			logg.Info("Retwetted " + tweet.IdStr)
+			_, err := api.Retweet(tweet.Id, false)
+			logg.Error(err.Error())
 		case <-tweetTickerC:
 			logg.Info("Ticker")
 			go request(tweetC)
 		}
 	}
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Kencurte?", "")
+	})
+
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
 
 func request(tweetC chan<- anaconda.Tweet) {
