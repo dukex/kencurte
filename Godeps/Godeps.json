@@ -1,0 +1,26 @@
+{
+	"ImportPath": "kencurte",
+	"GoVersion": "go1.3.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/ChimeraCoder/anaconda",
+			"Rev": "47bdd6d45c8e335a34a5f4b94cd4ffbe1c172621"
+		},
+		{
+			"ImportPath": "github.com/ChimeraCoder/tokenbucket",
+			"Rev": "c5a927568de7aad8a58127d80bcd36ca4e71e454"
+		},
+		{
+			"ImportPath": "github.com/garyburd/go-oauth/oauth",
+			"Rev": "e63dca786bb00b47f30463640b1fddf0e73f8376"
+		},
+		{
+			"ImportPath": "menteslibres.net/gosexy/redis",
+			"Rev": "57b8b81bae9300f7998f55de539a5deb8505e26a"
+		},
+		{
+			"ImportPath": "menteslibres.net/gosexy/to",
+			"Rev": "3962e3902237286c83772cfbe0fa68fc87c9b547"
+		}
+	]
+}
