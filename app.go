@@ -45,21 +45,23 @@ func main() {
 	tweetTickerC := time.NewTicker(2 * time.Hour).C
 	go request(tweetC)
 
-	for {
-		select {
-		case tweet := <-tweetC:
-			logg.Info("Retwetted " + tweet.IdStr)
-			t, err := api.Retweet(tweet.Id, false)
-			if err != nil {
-				logg.Error(err.Error())
-			} else {
-				log.Println(t)
+	go func() {
+		for {
+			select {
+			case tweet := <-tweetC:
+				logg.Info("Retwetted " + tweet.IdStr)
+				t, err := api.Retweet(tweet.Id, false)
+				if err != nil {
+					logg.Error(err.Error())
+				} else {
+					log.Println(t)
+				}
+			case <-tweetTickerC:
+				logg.Info("Ticker")
+				go request(tweetC)
 			}
-		case <-tweetTickerC:
-			logg.Info("Ticker")
-			go request(tweetC)
 		}
-	}
+	}()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Kencurte?", "")
