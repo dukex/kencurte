@@ -49,8 +49,12 @@ func main() {
 		select {
 		case tweet := <-tweetC:
 			logg.Info("Retwetted " + tweet.IdStr)
-			_, err := api.Retweet(tweet.Id, false)
-			logg.Error(err.Error())
+			t, err := api.Retweet(tweet.Id, false)
+			if err != nil {
+				logg.Error(err.Error())
+			} else {
+				log.Println(t)
+			}
 		case <-tweetTickerC:
 			logg.Info("Ticker")
 			go request(tweetC)
