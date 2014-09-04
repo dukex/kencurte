@@ -15,12 +15,18 @@
 			"Rev": "e63dca786bb00b47f30463640b1fddf0e73f8376"
 		},
 		{
-			"ImportPath": "menteslibres.net/gosexy/redis",
-			"Rev": "57b8b81bae9300f7998f55de539a5deb8505e26a"
+			"ImportPath": "github.com/op/go-logging",
+			"Rev": "06b24434bba6c80f1807aeb19d3cf62051c0a636"
 		},
 		{
-			"ImportPath": "menteslibres.net/gosexy/to",
-			"Rev": "3962e3902237286c83772cfbe0fa68fc87c9b547"
+			"ImportPath": "gopkg.in/bufio.v1",
+			"Comment": "v1",
+			"Rev": "567b2bfa514e796916c4747494d6ff5132a1dfce"
+		},
+		{
+			"ImportPath": "gopkg.in/redis.v2",
+			"Comment": "v2",
+			"Rev": "77d8805e9143844308620603c9a59ebda85e1fd1"
 		}
 	]
 }
