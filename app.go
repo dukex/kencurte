@@ -77,6 +77,7 @@ func main() {
 func request(tweetC chan<- anaconda.Tweet) {
 	v := url.Values{}
 	v.Set("count", "10")
+	v.Set("result_type", "recent")
 	v.Set("since_id", getSinceID())
 
 	logg.Info("Search with " + v.Encode())
