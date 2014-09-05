@@ -49,7 +49,11 @@ func main() {
 		for {
 			select {
 			case tweet := <-tweetC:
-				logg.Info("Retwetted " + tweet.IdStr)
+				if tweet.RetweetedStatus != nil {
+					return
+				}
+
+				logg.Info("Retwett " + tweet.IdStr)
 				t, err := api.Retweet(tweet.Id, false)
 				if err != nil {
 					logg.Error(err.Error())
