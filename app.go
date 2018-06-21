@@ -53,6 +53,10 @@ func main() {
 					return
 				}
 
+        if tweet.PossiblySensitive {
+          return
+        }
+
 				logg.Info("Retwett " + tweet.IdStr)
 				t, err := api.Retweet(tweet.Id, false)
 				if err != nil {
